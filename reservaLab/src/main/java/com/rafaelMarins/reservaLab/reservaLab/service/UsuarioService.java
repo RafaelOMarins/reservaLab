@@ -8,25 +8,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     public List<Usuario> listarTodos() {
-        return UsuarioRepository.findAll();
+        return usuarioRepository.findAll();
     }
 
     public Usuario buscarPorId(Long id) {
-        return UsuarioRepository.findById()
-                .orElseThrow() -> new RuntimeException("Usuário não encontrado com id: " + id);
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com esse id: " + id));
     }
 
     public Usuario salvar(Usuario usuario) {
-        return UsuarioRepository.save(Usuario);
+        return usuarioRepository.save(usuario);
     }
 
     public void deletar(Long id) {
-        UsuarioRepository.deleteById(id);
+        usuarioRepository.deleteById(id);
     }
 }
