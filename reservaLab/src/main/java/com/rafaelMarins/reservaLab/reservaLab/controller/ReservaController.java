@@ -24,7 +24,8 @@ public class ReservaController {
     }
 
     @PostMapping
-    public Reserva salvar(Reserva novaReserva) {
+    public Reserva salvar(@RequestBody Reserva novaReserva) {
+        System.out.println(novaReserva.getHorarioInicio());
         return reservaService.salvar(novaReserva);
     }
 

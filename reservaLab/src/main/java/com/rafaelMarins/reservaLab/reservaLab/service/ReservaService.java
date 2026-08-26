@@ -23,7 +23,6 @@ public class ReservaService {
    }
 
     public Reserva salvar(Reserva novaReserva) { /*VER A LÓGICA DESSA VERIFICAÇÃO, VER NÃO REVER E REVISAR PRA ENTENDER MELHOR */
-        System.out.println(novaReserva.getHorarioInicio());
         if (!novaReserva.getHorarioInicio().isBefore(novaReserva.getHorarioFim())) {
             throw new RuntimeException("Horário de início deve ser antes do horário de fim.");
         }
