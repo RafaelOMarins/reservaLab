@@ -27,11 +27,11 @@ public class Usuario {
         PROFESSOR, ADMIN
     }
 
-    public long setId() {
+    public long getId() {
         return id;
     }
 
-    public void getId(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 
