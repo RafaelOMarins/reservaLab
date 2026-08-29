@@ -14,6 +14,7 @@ import java.util.List;
 public class ReservaController {
     @Autowired
     private ReservaService reservaService;
+    @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping
@@ -34,7 +35,11 @@ public class ReservaController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(Long id) {
+    public void deletar(@PathVariable Long id, @RequestHeader("Authorization")String token) {
+        Usuario usuario = usuarioService.validarToken(token);
+        if (usuario.getRole() != Usuario.Role.ADMIN) {
+            throw new RuntimeException("Acesso negado!");
+        }
         reservaService.deletar(id);
     }
 
