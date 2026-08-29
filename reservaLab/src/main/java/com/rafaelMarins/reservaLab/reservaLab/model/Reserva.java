@@ -13,6 +13,9 @@ public class Reserva {
     @Column(nullable = false)
     private boolean disponivel;
 
+    @Column
+    private String assunto;
+
     @Column(nullable = false)
     private LocalDate data;
 
@@ -81,6 +84,10 @@ public class Reserva {
     public void setData(LocalDate data) {
         this.data = data;
     }
+
+    public String getAssunto() { return assunto;}
+
+    public void setAssunto(String assunto) {this.assunto = assunto;}
 
 
 

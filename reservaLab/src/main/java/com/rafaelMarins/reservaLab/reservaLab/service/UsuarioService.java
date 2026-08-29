@@ -15,23 +15,6 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> listarTodos() {
-        return usuarioRepository.findAll();
-    }
-
-    public Usuario buscarPorId(Long id) {
-        return usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com esse id: " + id));
-    }
-
-    public Usuario salvar(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
-
-    public void deletar(Long id) {
-
-        usuarioRepository.deleteById(id);
-    }
 
     public Usuario logar(String email, String senha)  {
         Usuario usuario = usuarioRepository.findByEmail(email)
@@ -56,5 +39,23 @@ public class UsuarioService {
     public Usuario validarToken(String token) {
         return usuarioRepository.findByToken(token)
                 .orElseThrow(() -> new RuntimeException("Token inválido ou expirado"));
+    }
+
+    public List<Usuario> listarTodos() {
+        return usuarioRepository.findAll();
+    }
+
+    public Usuario buscarPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com esse id: " + id));
+    }
+
+    public Usuario salvar(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
+    public void deletar(Long id) {
+
+        usuarioRepository.deleteById(id);
     }
 }

@@ -1,4 +1,4 @@
-package com.rafaelMarins.reservaLab.controller;
+package com.rafaelMarins.reservaLab.reservaLab.controller;
 
 import com.rafaelMarins.reservaLab.reservaLab.model.Usuario;
 import com.rafaelMarins.reservaLab.reservaLab.repository.UsuarioRepository;
@@ -18,12 +18,20 @@ public class UsuarioController {
 
 
     @GetMapping
-    public List<Usuario> listarTodos() {
+    public List<Usuario> listarTodos(@RequestHeader("Authorization")String token) {
+        Usuario usuario = usuarioService.validarToken(token);
+        if (usuario.getRole() != Usuario.Role.ADMIN) {
+            throw new RuntimeException("Acesso negado!");
+        }
         return usuarioService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public Usuario buscarPorId(@PathVariable Long id) {
+    public Usuario buscarPorId(@PathVariable Long id,@RequestHeader("Authorization")String token) {
+        Usuario usuario = usuarioService.validarToken(token);
+        if(usuario.getRole() != Usuario.Role.ADMIN) {
+            throw new RuntimeException("Acesso negado!");
+        }
         return usuarioService.buscarPorId(id);
     }
 
