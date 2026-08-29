@@ -1,6 +1,7 @@
 package com.rafaelMarins.reservaLab.reservaLab.service;
 
 import com.rafaelMarins.reservaLab.reservaLab.model.Laboratorio;
+import com.rafaelMarins.reservaLab.reservaLab.model.Laboratorio;
 import com.rafaelMarins.reservaLab.reservaLab.repository.LaboratorioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

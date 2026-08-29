@@ -23,9 +23,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public enum Role {
-        PROFESSOR, ADMIN
-    }
+    public enum Role { PROFESSOR, ADMIN }
+
+    public String token;
 
     public long getId() {
         return id;
@@ -67,4 +67,9 @@ public class Usuario {
         this.role = role;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) { this.token = token; }
 }

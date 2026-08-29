@@ -1,8 +1,9 @@
-package com.rafaelMarins.reservaLab.reservaLab.controller;
+package com.rafaelMarins.reservaLab.controller;
 
 import com.rafaelMarins.reservaLab.reservaLab.model.Usuario;
 import com.rafaelMarins.reservaLab.reservaLab.repository.UsuarioRepository;
 import com.rafaelMarins.reservaLab.reservaLab.service.UsuarioService;
+import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,15 +28,24 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario salvar(@RequestBody Usuario usuario) {
-        System.out.println(usuario.getEmail());
+    public Usuario salvar(@RequestBody Usuario usuario, @RequestHeader("Authorization")String token) {
+        usuarioService.validarToken(token);
+        if (usuario.getRole() != Usuario.Role.ADMIN) {
+            throw new RuntimeException("Acesso negado!");
+        }
         return usuarioService.salvar(usuario);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
+    public void deletar(@PathVariable Long id, @RequestHeader("Authorization")String token) {
+        Usuario usuario = usuarioService.validarToken(token);
+        if (usuario.getRole() != Usuario.Role.ADMIN) {
+            throw new RuntimeException("acesso negado");
+        }
         usuarioService.deletar(id);
+
     }
+
 
 
 }

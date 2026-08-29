@@ -1,7 +1,9 @@
 package com.rafaelMarins.reservaLab.reservaLab.controller;
 
 import com.rafaelMarins.reservaLab.reservaLab.model.Reserva;
+import com.rafaelMarins.reservaLab.reservaLab.model.Usuario;
 import com.rafaelMarins.reservaLab.reservaLab.service.ReservaService;
+import com.rafaelMarins.reservaLab.reservaLab.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 public class ReservaController {
     @Autowired
     private ReservaService reservaService;
+    private UsuarioService usuarioService;
 
     @GetMapping
     public List<Reserva> listarTodos() {
@@ -24,8 +27,9 @@ public class ReservaController {
     }
 
     @PostMapping
-    public Reserva salvar(@RequestBody Reserva novaReserva) {
-        System.out.println(novaReserva.getHorarioInicio());
+    public Reserva salvar(@RequestBody Reserva novaReserva, @RequestHeader("Authorization") String token) {
+        Usuario professor = usuarioService.validarToken(token);
+        novaReserva.setProfessor(professor);
         return reservaService.salvar(novaReserva);
     }
 

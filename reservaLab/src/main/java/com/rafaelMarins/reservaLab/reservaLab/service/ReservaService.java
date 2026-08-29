@@ -13,14 +13,14 @@ public class ReservaService {
     @Autowired
     private ReservaRepository reservaRepository;
 
-   public List<Reserva> listarTodos() {
-       return reservaRepository.findAll();
-   }
+    public List<Reserva> listarTodos() {
+        return reservaRepository.findAll();
+    }
 
-   public Reserva buscarPorId(Long id) {
-       return reservaRepository.findById(id)
-               .orElseThrow(() -> new RuntimeException("Não foi encontrado um usuário com esse id: " + id));
-   }
+    public Reserva buscarPorId(Long id) {
+        return reservaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Não foi encontrado um usuário com esse id: " + id));
+    }
 
     public Reserva salvar(Reserva novaReserva) { /*VER A LÓGICA DESSA VERIFICAÇÃO, VER NÃO REVER E REVISAR PRA ENTENDER MELHOR */
         if (!novaReserva.getHorarioInicio().isBefore(novaReserva.getHorarioFim())) {
@@ -44,8 +44,9 @@ public class ReservaService {
         return reservaRepository.save(novaReserva);
     }
 
-   public void deletar(Long id) {
-       reservaRepository.deleteById(id);
-   }
+    public void deletar(Long id) {
+
+        reservaRepository.deleteById(id);
+    }
 
 }

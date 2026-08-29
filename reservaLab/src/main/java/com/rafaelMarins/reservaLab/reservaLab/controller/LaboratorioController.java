@@ -2,15 +2,20 @@ package com.rafaelMarins.reservaLab.reservaLab.controller;
 
 
 import com.rafaelMarins.reservaLab.reservaLab.model.Laboratorio;
+import com.rafaelMarins.reservaLab.reservaLab.model.Usuario;
 import com.rafaelMarins.reservaLab.reservaLab.service.LaboratorioService;
+import com.rafaelMarins.reservaLab.reservaLab.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("laboratorio")
+@RequestMapping("laboratorios")
 public class LaboratorioController {
+
+    UsuarioService usuarioService;
+    Usuario usuario;
 
     @Autowired
     private LaboratorioService laboratorioService;
@@ -26,7 +31,11 @@ public class LaboratorioController {
     }
 
     @PostMapping
-    public Laboratorio criar(@RequestBody Laboratorio laboratorio) {
+    public Laboratorio criar(@RequestBody Laboratorio laboratorio, @RequestHeader("Authorization")String token) {
+        usuarioService.validarToken(token);
+        if (usuario.getRole() != Usuario.Role.ADMIN ) {
+            throw new RuntimeException("Acesso negado!");
+        }
         return laboratorioService.salvar(laboratorio);
     }
 
