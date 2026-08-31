@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { authApi } from "../../lib/api";
 import { salvarSessao } from "../../lib/auth";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
@@ -17,7 +19,7 @@ export default function LoginPage() {
     try {
       const usuario = await authApi.login(email, senha);
       salvarSessao(usuario);
-      window.location.href = "/";
+      router.push("/laboratorios");
     } catch (e) {
       setErro(e.message);
     } finally {

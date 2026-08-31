@@ -21,8 +21,8 @@ async function request(path, options = {}, autenticado = false) {
   if (!res.ok) {
     let message = `Erro ${res.status}`;
     try {
-      const text = await res.text();
-      if (text) message = text;
+      const data = await res.json();
+      if (data?.message) message = data.message;
     } catch (e) {
       // ignora, mantém mensagem padrão
     }
@@ -42,7 +42,11 @@ export const laboratorioApi = {
   listar: () => request("/laboratorios"),
   buscar: (id) => request(`/laboratorios/${id}`),
   criar: (data) =>
-    request("/laboratorios", { method: "POST", body: JSON.stringify(data) }),
+    request(
+      "/laboratorios",
+      { method: "POST", body: JSON.stringify(data) },
+      true
+    ),
   atualizar: (id, data) =>
     request(`/laboratorios/${id}`, {
       method: "PUT",

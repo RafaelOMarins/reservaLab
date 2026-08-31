@@ -14,8 +14,8 @@ import java.util.List;
 @RequestMapping("laboratorios")
 public class LaboratorioController {
 
+    @Autowired
     UsuarioService usuarioService;
-    Usuario usuario;
 
     @Autowired
     private LaboratorioService laboratorioService;
@@ -32,7 +32,7 @@ public class LaboratorioController {
 
     @PostMapping
     public Laboratorio criar(@RequestBody Laboratorio laboratorio, @RequestHeader("Authorization")String token) {
-        usuarioService.validarToken(token);
+        Usuario usuario =usuarioService.validarToken(token);
         if (usuario.getRole() != Usuario.Role.ADMIN ) {
             throw new RuntimeException("Acesso negado!");
         }

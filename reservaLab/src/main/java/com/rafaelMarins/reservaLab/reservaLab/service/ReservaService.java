@@ -5,7 +5,6 @@ import com.rafaelMarins.reservaLab.reservaLab.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -45,6 +44,7 @@ public class ReservaService {
     }
 
     public void deletar(Long id) {
+
 
         reservaRepository.deleteById(id);
     }

@@ -16,7 +16,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-
     @GetMapping
     public List<Usuario> listarTodos(@RequestHeader("Authorization")String token) {
         Usuario usuario = usuarioService.validarToken(token);

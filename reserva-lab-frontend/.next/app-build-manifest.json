@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/usuarios/page": [
+    "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/usuarios/page.js"
+      "static/chunks/app/login/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -11,30 +11,20 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/laboratorios/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/laboratorios/page.js"
+    ],
     "/reservas/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/reservas/page.js"
     ],
-    "/login/page": [
+    "/usuarios/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
-    ],
-    "/registro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/registro/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/laboratorios/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/laboratorios/page.js"
+      "static/chunks/app/usuarios/page.js"
     ]
   }
 }

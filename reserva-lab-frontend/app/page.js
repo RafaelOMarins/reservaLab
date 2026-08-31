@@ -1,11 +1,22 @@
-import { redirect } from "next/navigation";
-
 export default function Home() {
-  const usuarioLogado = false;
+  return (
+    <div>
+      <h1>ReservaLab</h1>
+      <p className="subtitle">
+        Sistema de reserva de laboratórios de informática para fins didáticos.
+      </p>
 
-  if (!usuarioLogado) {
-    redirect("/login");
-  }
-
-  return <div>Dashboard</div>;
+      <div className="card-grid">
+        <a href="/laboratorios" className="card-link">
+          Laboratórios
+        </a>
+        <a href="/usuarios" className="card-link">
+          Usuários
+        </a>
+        <a href="/reservas" className="card-link">
+          Reservas
+        </a>
+      </div>
+    </div>
+  );
 }

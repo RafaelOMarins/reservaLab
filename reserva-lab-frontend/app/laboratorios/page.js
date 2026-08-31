@@ -68,35 +68,37 @@ export default function LaboratoriosPage() {
 
       {erro && <div className="error-box">{erro}</div>}
 
-      <form className="form-box" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label>Nome</label>
-          <input
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-row">
-          <label>Capacidade</label>
-          <input
-            type="number"
-            value={capacidade}
-            onChange={(e) => setCapacidade(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-row">
-          <label>Localização</label>
-          <input
-            value={localizacao}
-            onChange={(e) => setLocalizacao(e.target.value)}
-          />
-        </div>
-        <button className="btn" type="submit">
-          Criar laboratório
-        </button>
-      </form>
+      {souAdmin && (
+        <form className="form-box" onSubmit={handleSubmit}>
+          <div className="form-row">
+            <label>Nome</label>
+            <input
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-row">
+            <label>Capacidade</label>
+            <input
+              type="number"
+              value={capacidade}
+              onChange={(e) => setCapacidade(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-row">
+            <label>Localização</label>
+            <input
+              value={localizacao}
+              onChange={(e) => setLocalizacao(e.target.value)}
+            />
+          </div>
+          <button className="btn" type="submit">
+            Criar laboratório
+          </button>
+        </form>
+      )}
 
       {carregando ? (
         <p>Carregando...</p>
@@ -138,7 +140,7 @@ export default function LaboratoriosPage() {
 
       {!souAdmin && (
         <p className="subtitle" style={{ marginTop: 16 }}>
-          Apenas administradores podem excluir laboratórios.
+          Apenas administradores podem criar ou excluir laboratórios.
         </p>
       )}
     </div>

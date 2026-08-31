@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { getUsuarioLogado, limparSessao } from "../../lib/auth";
 
 export default function Navbar() {
   const [usuario, setUsuario] = useState(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     setUsuario(getUsuarioLogado());
-  }, []);
+  }, [pathname]);
 
   function handleLogout() {
     limparSessao();

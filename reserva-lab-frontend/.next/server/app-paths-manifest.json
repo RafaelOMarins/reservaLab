@@ -1,8 +1,6 @@
 {
-  "/usuarios/page": "app/usuarios/page.js",
-  "/laboratorios/page": "app/laboratorios/page.js",
-  "/registro/page": "app/registro/page.js",
-  "/page": "app/page.js",
   "/login/page": "app/login/page.js",
-  "/reservas/page": "app/reservas/page.js"
+  "/reservas/page": "app/reservas/page.js",
+  "/laboratorios/page": "app/laboratorios/page.js",
+  "/usuarios/page": "app/usuarios/page.js"
 }

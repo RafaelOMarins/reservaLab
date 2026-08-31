@@ -22,7 +22,7 @@ public class UsuarioService {
         System.out.println(senha);
         System.out.println(usuario.getSenha());
         if (!usuario.getSenha().equals(senha)) {
-            throw new RuntimeException(" ou senha inválidos");
+            throw new RuntimeException("Email ou senha inválidos");
         }
         String token = UUID.randomUUID().toString();
         usuario.setToken(token);
