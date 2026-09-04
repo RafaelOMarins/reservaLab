@@ -8,6 +8,7 @@ public class ReservaLabApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ReservaLabApplication.class, args);
+
 	}
 
 }

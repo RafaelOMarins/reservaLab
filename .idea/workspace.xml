@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eec130c-49f0-4ebc-a5e2-719afa54ceec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/reservaLab/HELP.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservaLab/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/reservaLab/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservaLab/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reservaLab/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservaLab/src/main/java/com/rafaelMarins/reservaLab/reservaLab/ReservaLabApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservaLab/src/main/java/com/rafaelMarins/reservaLab/reservaLab/ReservaLabApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservaLab/src/main/java/com/rafaelMarins/reservaLab/reservaLab/security/jwUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservaLab/src/main/java/com/rafaelMarins/reservaLab/reservaLab/security/jwUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
+import java.sql.Date;
 import java.util.Base64;
+import io.jsonwebtoken.Claims;
 
 
 @Component
@@ -22,5 +24,18 @@ public class jwUtil {
 
     Key hmacKey = new SecretKeySpec(keyBytes, "HmacSHA256");
 
-    String jwt = Jwts.builder().subject("user123").signWith(hmacKey).compact();
+    String jwt = Jwts.builder().subject("email").signWith(hmacKey).compact();
+
+    public String gerarToken(String email) {
+        Date agora = new Date();
+        Date expiracao = new Date(System.currentTimeMillis() + expiration);
+
+        return Jwts.builder().subject(email).issuedAt(agora).expiration(expiracao).signWith(hmacKey).compact();
+    }
+
+    public String extrairEmail(String jwt) {
+        Claims claims = Jwts.parser().verifyWith(hmacKey).build().parseSignedClaims(jwt).getPayload();
+        return claims.getSubject();
+    }
+
 }
